@@ -49,7 +49,11 @@ const dataGetter = (() => {
 
     const metadata = Array.from(
         document.querySelectorAll('._lkn')[1].querySelectorAll('tr'),
-    ).map(e => e.innerText.split(':'));
+    ).map(e => {
+        const [first, ...rest] = e.innerText.split(':'); 
+        const remainder = rest.join(':'); 
+        return [first, remainder];
+    });
 
     const date = metadata.find(([key, _]) => key.match('Time Range'))[1];
 
