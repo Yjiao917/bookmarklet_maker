@@ -76,7 +76,8 @@ const dataGetter = (() => {
     if (urlParams.custom_label != null) {
         collectionName = urlParams.custom_label;
     }
-
+    console.log('collectionName');
+    console.log(collectionName);
     if (collectionName == null) {
         throw new Error('No collection found');
     }
@@ -127,6 +128,7 @@ const dataGetter = (() => {
             const diffAll = diffAllElement.innerText
                 .split(/\n|±/)
                 .map(v => parseFloat(v));
+            console.log(diffAll);
             const value = diffAll[0];
             const plus = diffAll[1];
             const minus = Math.abs(diffAll[2] ?? diffAll[1]);
@@ -160,7 +162,8 @@ const dataGetter = (() => {
                 string.push(`${subSectionLabel}:`);
             }
 
-            const label = e.querySelector('._345y').innerText;
+            const label = e.querySelector('._af23').innerText;
+            console.log(label);
             string.push(`${label}:`);
             const stringVal = value > 0 ? `+${round(value)}` : `${round(value)}`;
             string.push(isNeutral ? 'Neutral' : stringVal + '%');
