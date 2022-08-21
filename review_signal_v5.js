@@ -105,8 +105,8 @@ const dataGetter = (() => {
             const textComponents = e.innerText.split('\n');
             const isSubtitle = textComponents.length === 1;
             if (isSubtitle) {
-                subtitle = e.querySelector('._345y').innerText.split(', ')[0];
-                subSectionLabel = e.querySelector('._345y').innerText.split(', ')[1];
+                subtitle = e.querySelector('._af23').innerText.split(', ')[0];
+                subSectionLabel = e.querySelector('._af23').innerText.split(', ')[1];
 
                 subtitleEntryCount.set(subtitle, 0);
                 lastSubtitle = subtitle;
