@@ -8,7 +8,7 @@ let share_button = document.querySelector('[aria-label="Share"]');
 let exp_info = document.querySelector('[aria-label="experiment and query information"]');
 
 const metricSettingUpdate = ((index) => {
-  	console.log('metricSettingUpdate');
+  	// console.log('metricSettingUpdate');
   	document.querySelector('._64oj').firstChild.click();
     let settingTable = document.querySelector('._422k').children;
     let row = settingTable[index].querySelector('[role=button]');
