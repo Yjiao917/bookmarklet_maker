@@ -8,10 +8,10 @@ let share_button = document.querySelector('[aria-label="Share"]');
 let exp_info = document.querySelector('[aria-label="experiment and query information"]');
 
 const metricSettingUpdate = ((index) => {
-	let settingTable = document.querySelector('._422k').children;
-  	let row = settingTable[index].querySelector('[role=button]');
-  	row.click();
-  	
+    let settingTable = document.querySelector('._422k').children;
+    let row = settingTable[index].querySelector('[role=button]');
+    row.click();
+
 });
 
 const dataGetter = (() => {
@@ -138,7 +138,7 @@ const dataGetter = (() => {
             const diffAll = diffAllElement.innerText
                 .split(/\n|±/)
                 .map(v => parseFloat(v));
-            console.log(diffAll);
+            // console.log(diffAll);
             const value = diffAll[0];
             const plus = diffAll[1];
             const minus = Math.abs(diffAll[2] ?? diffAll[1]);
@@ -176,7 +176,7 @@ const dataGetter = (() => {
 
             const label = subtitleText.innerText;
             //  console.log(label);
-          
+
             string.push(`${label}:`);
             const stringVal = value > 0 ? `+${round(value)}` : `${round(value)}`;
             string.push(isNeutral ? 'Neutral' : stringVal + '%');
@@ -187,6 +187,18 @@ const dataGetter = (() => {
                 } else {
                     string.push(`(+${round(plus)}-${round(minus)})`);
                 }
+            }
+            if (["cpu", "time", "average", "avg", "queries", "latency"].filter(item => label.toLowerCase().includes(item)).length > 0) {
+                metricSettingUpdate(1);
+                const diffAllElement2 = e.querySelector('._1c1_');
+                const diffAll2 = diffAllElement2.innerText
+                    .split(/\n|±/)
+                    .map(v => parseFloat(v));
+                // console.log(diffAll);
+                const value2 = diffAll2[0];
+                string.push(`(Delta: ${round(value2)})`);
+
+                metricSettingUpdate(0);
             }
 
             return {
@@ -212,7 +224,7 @@ const dataGetter = (() => {
         });
     }
 
-    data = [`### [${collectionName} (${date})](${url})`]
+    data = [`### [${collectionName.trim()} (${date.trim()})](${url})`]
         .concat(outcomes.map(({
             label
         }) => label))
@@ -238,7 +250,7 @@ const copyToClipboard = str => {
     el.style.top = '100px';
     el.select();
     document.execCommand('copy');
-  	exp_info.click();
+    exp_info.click();
     //     document.body.removeChild(el);
 };
 
@@ -265,7 +277,7 @@ setTimeout(() => {
                 console.log(url);
                 copyToClipboard(data);
 
-                // share_button.click();
+                share_button.click();
                 // exp_info.click();
 
             }, 1200);
