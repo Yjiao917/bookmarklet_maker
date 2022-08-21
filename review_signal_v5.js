@@ -149,7 +149,9 @@ const dataGetter = (() => {
 
             const string = useSubtitle ? [`  -`] : ['-'];
 
-            const isPositiveOutcome = e.querySelector('._g50') != null;
+//             const isPositiveOutcome = e.querySelector('._g50') != null;
+            const isPositiveOutcome = e.querySelector('._af1x._adwv') != null;
+            
             if (!isNeutral) {
                 string.push(
                     isPositiveOutcome ?
