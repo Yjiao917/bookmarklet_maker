@@ -3,7 +3,7 @@
 
 let url = null;
 let data = '---data---';
-
+let deltaKeywords = ["cpu", "time", "average", "avg", "queries", "latency"];
 let share_button = document.querySelector('[aria-label="Share"]');
 let exp_info = document.querySelector('[aria-label="experiment and query information"]');
 
@@ -198,6 +198,7 @@ const dataGetter = (() => {
                     string.push(`(+${round(plus)}-${round(minus)})`);
                 }
             }
+            deltaKeywords = deltaKeywords.concat(window.delta ?? [])
             if (["cpu", "time", "average", "avg", "queries", "latency"].filter(item => label.toLowerCase().includes(item)).length > 0) {
                 metricSettingUpdate(1);
                 const diffAllElement2 = e.querySelector('._1c1_');
