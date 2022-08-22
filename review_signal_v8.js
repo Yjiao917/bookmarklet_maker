@@ -228,10 +228,11 @@ const dataGetter = (() => {
             label: '- Neutral'
         });
     }
-
+    // console.log(filter);
     if (filter != null) {
+    let filterList = filter.slice(1)[0].split('\n').map(item => item.trim()).filter(item => item.trim() != ''); 
         outcomes.unshift({
-            label: `_Filter: ${filter.slice(1).join(', ')}_`
+            label: `_Filter: ${filterList.join(', ')}_`
         });
     }
 
