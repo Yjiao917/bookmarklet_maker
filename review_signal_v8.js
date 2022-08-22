@@ -3,7 +3,7 @@
 
 let url = null;
 let data = '---data---';
-let deltaKeywords = ["cpu", "time", "average", "avg", "queries", "latency"];
+let deltaKeywords = ["cpu", "time", "average", "avg", "queries", "latency", "cost"];
 let share_button = document.querySelector('[aria-label="Share"]');
 let exp_info = document.querySelector('[aria-label="experiment and query information"]');
 
