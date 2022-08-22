@@ -198,8 +198,8 @@ const dataGetter = (() => {
                     string.push(`(+${round(plus)}-${round(minus)})`);
                 }
             }
-            deltaKeywords = deltaKeywords.concat(window.delta ?? [])
-            if (["cpu", "time", "average", "avg", "queries", "latency"].filter(item => label.toLowerCase().includes(item)).length > 0) {
+            deltaKeywords = deltaKeywords.concat(window.delta ?? []);
+            if (deltaKeywords.filter(item => label.toLowerCase().includes(item)).length > 0) {
                 metricSettingUpdate(1);
                 const diffAllElement2 = e.querySelector('._1c1_');
                 const diffAll2 = diffAllElement2.innerText
