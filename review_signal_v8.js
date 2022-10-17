@@ -4,6 +4,7 @@
 let url = null;
 let data = '---data---';
 let deltaKeywords = ["cpu", "time", "average", "avg", "queries", "latency", "cost"];
+let overallKeywords = ["overall"];
 let share_button = document.querySelector('[aria-label="Share"]');
 let exp_info = document.querySelector('[aria-label="experiment and query information"]');
 
@@ -208,6 +209,27 @@ const dataGetter = (() => {
                 // console.log(diffAll);
                 const value2 = diffAll2[0];
                 string.push(`(Delta: ${round(value2)})`);
+
+                metricSettingUpdate(0);
+            }
+          
+            overallKeywords = overallKeywords.concat(window.delta ?? []);
+            if (overallKeywords.filter(item => label.toLowerCase().includes(item)).length > 0) {
+                metricSettingUpdate(2);
+                const diffAllElement3 = e.querySelector('._1c1_');
+                
+                const diffAll3 = diffAllElement3.innerText
+                    .split(/\n|±/)
+                    .map(v => v);
+                console.log(diffAll3);
+                const value3 = diffAll3[0];
+                var regex = /(\d)(\.\d+)(\w)/;
+//                 console.log(value3.substr(0, position));
+//                 if (position !== -1){
+//                   string.push(`(Overall: ${value3.substr(0, position)})`);
+//                 }
+          
+                string.push(`(Overall: ${value3.replace(regex, `$1$3`)})`);
 
                 metricSettingUpdate(0);
             }
