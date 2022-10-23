@@ -290,6 +290,12 @@ const copyToClipboard = str => {
 
 let complete = false;
 let query_button = document.querySelector('[aria-label="Run Query"]');
+if (query_button == null){
+   query_button = document.querySelector('[aria-label="Fetch Results"]');
+}
+if (query_button == null){
+   console.log('query_button is null..');
+}
 query_button.click();
 
 setTimeout(() => {
