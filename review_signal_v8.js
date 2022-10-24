@@ -157,8 +157,11 @@ const dataGetter = (() => {
             const isNeutral =
                 (value + plus >= 0 && value - minus <= 0) ||
                 (value + plus <= 0 && value - minus >= 0);
-            if (isNeutral && !window.showNeutral) {
+            if (titleText.innerText.toLowerCase().includes('core')){
+            } else {
+              if (isNeutral && !window.showNeutral) {
                 return null;
+              }
             }
 
             if (useSubtitle) {
