@@ -202,6 +202,7 @@ const dataGetter = (() => {
                     string.push(`(+${round(plus)}-${round(minus)})`);
                 }
             }
+            console.log('window.delta', window.delta);
             deltaKeywords = deltaKeywords.concat(window.delta ?? []);
             if (deltaKeywords.filter(item => label.toLowerCase().includes(item)).length > 0) {
                 metricSettingUpdate(1);
@@ -216,7 +217,8 @@ const dataGetter = (() => {
                 metricSettingUpdate(0);
             }
           
-            overallKeywords = overallKeywords.concat(window.delta ?? []);
+            console.log('window.overall', window.overall);
+            overallKeywords = overallKeywords.concat(window.overall ?? []);
             if (overallKeywords.filter(item => label.toLowerCase().includes(item)).length > 0) {
                 metricSettingUpdate(2);
                 const diffAllElement3 = e.querySelector('._1c1_');
